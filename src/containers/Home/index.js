@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
 
 /* components */
-import { TopImage } from 'components/TopImage';
-import { Tools } from 'components/Tools';
-import { Projects } from 'components/Projects';
+import { TopImage } from '../../components/TopImage';
+import { Tools } from '../../components/Tools';
+import { Projects } from '../../components/Projects';
 
 const metaData = {
   title: 'Redux Easy Boilerplate',
