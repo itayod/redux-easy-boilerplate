@@ -3,9 +3,6 @@ import express from 'express';
 import webpack from 'webpack';
 import webpackConfig from './webpack/common.config';
 
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-
 import React from 'react';
 import { RoutingContext, match } from 'react-router';
 import { Provider } from 'react-redux';
