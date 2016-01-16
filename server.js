@@ -2,6 +2,7 @@ import express from 'express';
 
 import webpack from 'webpack';
 import webpackConfig from './webpack/common.config';
+
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
@@ -11,6 +12,10 @@ import { Provider } from 'react-redux';
 import createLocation from 'history/lib/createLocation';
 
 import configureStore from './src/store/configureStore';
+
+require.extensions['.css'] = function() { return null }
+require.extensions['.scss'] = function() { return null }
+
 import routes from './src/routes';
 
 const app = express();
@@ -64,14 +69,12 @@ app.get('/*', function (req, res) {
 
     const componentHTML = React.renderToString(InitialView);
     const initialState = store.getState();
-    res.status(200).end(renderFullPage(componentHTML,initialState))
+    res.status(200).end(renderFullPage(componentHTML, initialState))
   });
 });
 
-const server = app.listen(3002, function () {
+const server = app.listen(3000, function () {
   const host = server.address().address;
   const port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Listening at http://localhost:3000');
 });
-
-

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 /* component styles */
-import { styles } from './styles.scss';
+const styles = require('./styles.scss');
 
 export class Header extends Component {
   render() {
