@@ -1,6 +1,15 @@
-const http = require('http');
-const express = require('express');
+import http from 'http';
+import express from 'express';
+import setComponents from 'react-time-to-tea';
+
 const app = express();
+
+const components = [
+  './src/containers',
+  './src/components',
+];
+
+components.map(dir => setComponents(dir));
 
 app.use(require('morgan')('short'));
 
