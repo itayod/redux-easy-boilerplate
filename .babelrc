@@ -5,7 +5,6 @@
   ],
   "env": {
     "start": {
-      "presets": ["react-hmre"]
     }
   }
 }

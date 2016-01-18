@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
 const PROJECTS = [{
   url: 'http://gradusdevelopment.com',
@@ -14,13 +15,19 @@ const PROJECTS = [{
 }];
 
 /* images */
-const icons = [];
-PROJECTS.map(project => icons.push(require(`./files/${project.name.replace(' ', '')}.jpg`)));
 
+const icons = [];
+
+
+@withStyles(s)
 export class Projects extends Component {
+  componentDidMount() {
+    PROJECTS.map(project => icons.push(require(`./files/${project.name.replace(' ', '')}.jpg`)));
+  }
+
   render() {
     return (
-      <section className={`${styles}`}>
+      <section className={`${s.styles}`}>
         <div className="container">
 
           <div className="row">

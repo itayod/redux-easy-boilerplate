@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
+@withStyles(s)
 export class Items extends Component {
-
   static propTypes = {
     items: React.PropTypes.array,
     delItem: React.PropTypes.func,
@@ -24,7 +25,7 @@ export class Items extends Component {
     const { items } = this.props;
 
     return (
-      <div className={styles}>
+      <div className={s.styles}>
         {!items.length && <span>Array is empty</span>}
         {
           items.map((item, index) =>

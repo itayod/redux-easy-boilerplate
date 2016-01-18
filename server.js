@@ -10,9 +10,6 @@ import createLocation from 'history/lib/createLocation';
 
 import configureStore from './src/store/configureStore';
 
-require.extensions['.css'] = function() { return null }
-require.extensions['.scss'] = function() { return null }
-
 import routes from './src/routes';
 
 const app = express();
@@ -34,18 +31,10 @@ const renderFullPage = (html, initialState) => {
 
 const compiler = webpack(webpackConfig);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true, publicPath: webpackConfig.output.publicPath,
-}));
-
-app.use(require('webpack-hot-middleware')(compiler, {
-  log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000,
-}));
-
-app.use(express.static(__dirname + '/'));
-
 app.get('/*', function (req, res) {
   const location = createLocation(req.url);
+  const css = [];
+  const context = { insertCss: (styles) => css.push(styles._getCss()) };
   match({ routes, location }, (err, redirectLocation, renderProps) => {
     if (err) {
       console.error(err);
@@ -59,14 +48,13 @@ app.get('/*', function (req, res) {
 
     const InitialView = (
       <Provider store={store}>
-        {() =>
-          <RoutingContext {...renderProps} />}
+        <RoutingContext {...renderProps} />
       </Provider>
     );
 
     const componentHTML = React.renderToString(InitialView);
     const initialState = store.getState();
-    res.status(200).end(renderFullPage(componentHTML, initialState))
+    res.status(200).end(renderFullPage(componentHTML, initialState, ))
   });
 });
 

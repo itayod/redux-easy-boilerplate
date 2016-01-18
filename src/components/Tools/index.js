@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
 /* images */
-const reactjs = require('./files/reactjs.png');
-const redux = require('./files/redux.png');
-const babel = require('./files/babel.png');
-const webpack = require('./files/webpack.png');
-const bootstrap = require('./files/bootstrap.png');
-const mocha = require('./files/mocha.png');
+let images = [];
 
+@withStyles(s)
 export class Tools extends Component {
+  componentDidMount() {
+    images['reactjs'] = require('./files/reactjs.png');
+    images['redux'] = require('./files/redux.png');
+    images['babel'] = require('./files/babel.png');
+    images['webpack'] = require('./files/webpack.png');
+    images['bootstrap'] = require('./files/bootstrap.png');
+    images['mocha'] = require('./files/mocha.png');
+  }
   render() {
     return (
-      <section className={`${styles}`}>
+      <section className={`${s.styles}`}>
         <div className="container">
 
           <div className="row">
@@ -27,42 +32,42 @@ export class Tools extends Component {
 
           <div className="row">
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={reactjs} />
+              <img src={images['reactjs']} />
               <h4>
                 React
               </h4>
             </div>
 
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={redux} />
+              <img src={images['redux']} />
               <h4>
                 Redux
               </h4>
             </div>
 
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={babel} />
+              <img src={images['babel']} />
               <h4>
                 Babel
               </h4>
             </div>
 
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={webpack} />
+              <img src={images['webpack']} />
               <h4>
                 Webpack
               </h4>
             </div>
 
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={bootstrap} />
+              <img src={images['bootstrap']} />
               <h4>
                 Bootstrap
               </h4>
             </div>
 
             <div className="col-xs-6 col-sm-2 col-md-2 col-lg-2 tool">
-              <img src={mocha} />
+              <img src={images['mocha']} />
               <h4>
                 Mocha
               </h4>

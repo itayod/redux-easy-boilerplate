@@ -8,7 +8,6 @@ import { isMobileAndTablet } from './isMobileAndTablet';
  */
 export function setParallax(elem, speed = 30) {
   const top = (window.pageYOffset - elem.offsetTop) / speed;
-
   isMobileAndTablet
     ? elem.style.backgroundPosition = `0px ${ top }px`
     : null;

@@ -13,7 +13,11 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.scss$/,
-      loader: 'style!css!postcss-loader!sass',
+      loaders: [
+        'isomorphic-style-loader',
+        'css-loader?modules&localIdentName=[name]_[local]_[hash:base64:3]',
+        'postcss-loader'
+      ]
     }],
   },
 

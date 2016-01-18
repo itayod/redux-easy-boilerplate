@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
+@withStyles(s)
 export class Header extends Component {
   render() {
     return (
-      <header className={`${styles}`}>
+      <header className={`${s.styles}`}>
         <div className="container">
           <div className="row">
             <div className="col-xs-5 col-sm-3 col-md-3 col-lg-3 logo">

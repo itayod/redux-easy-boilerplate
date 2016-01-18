@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import LoadingOrderAnimation from 'react-loading-order-with-animation';
-
-/* utils */
-import { setParallax } from '../../utils/parallax';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
+@withStyles(s)
 export class TopImage extends Component {
-
   constructor(props) {
     super(props);
   }
@@ -27,33 +24,8 @@ export class TopImage extends Component {
 
   render() {
     return (
-      <section className={`${styles}`} ref="parallax">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-              <LoadingOrderAnimation animation="fade-in"
-                move="from-bottom-to-top"
-                distance={30}
-                speed={700}
-                wait={700}
-              >
-                <h1 className="title">
-                  Redux Easy Boilerplate
-                </h1>
-              </LoadingOrderAnimation>
-              <LoadingOrderAnimation animation="fade-in"
-                move="from-bottom-to-top"
-                distance={60}
-                speed={700}
-                wait={900}
-              >
-                <p>
-                  Start your project easy and fast with modern tools
-                </p>
-              </LoadingOrderAnimation>
-            </div>
-          </div>
-        </div>
+      <section className={`${s.styles}`} ref="parallax">
+
       </section>
     );
   }

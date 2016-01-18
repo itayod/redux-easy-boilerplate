@@ -3,8 +3,10 @@ import { reduxForm } from 'redux-form';
 import { reset } from 'redux-form';
 
 /* component styles */
-const styles = require('./styles.scss');
+import withStyles from '../../utils/withStyles.js';
+import s from './styles.scss';
 
+@withStyles(s)
 export class AddItem extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
@@ -34,7 +36,7 @@ export class AddItem extends Component {
     } = this.props;
 
     return (
-      <form className={styles} onSubmit={this.onAdd}>
+      <form className={s.styles} onSubmit={this.onAdd}>
         <div className="form-group">
           <input
             type="text"
